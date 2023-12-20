@@ -1,24 +1,44 @@
 <?php
 function generaPass($alfabeto, $maiuscole, $numeri, $simboli)
 {
-
     $password = [];
+    $usedCharacters = [];
     $i = 0;
     do {
         $n = rand(0, 3);
         if ($n == 0 && isset($_GET["letters"]) && $_GET["letters"]) {
-            $password[] = $alfabeto[rand(0, 25)];
-            $i++;
+            $char = $alfabeto[rand(0, count($alfabeto) - 1)];
+            if (!in_array($char, $usedCharacters)) {
+                $password[] = $char;
+                $usedCharacters[] = $char;
+                $i++;
+            }
         } else if ($n == 1 && isset($_GET["letters"]) && $_GET["letters"]) {
-            $password[] = $maiuscole[rand(0, 25)];
-            $i++;
+            $char = $maiuscole[rand(0, count($maiuscole) - 1)];
+            if (!in_array($char, $usedCharacters)) {
+                $password[] = $char;
+                $usedCharacters[] = $char;
+
+                $i++;
+            }
         } else if ($n == 2 && isset($_GET["numbers"]) && $_GET["numbers"]) {
-            $password[] = $numeri[rand(0, 9)];
-            $i++;
+            $char = $numeri[rand(0, count($numeri) - 1)];
+            if (!in_array($char, $usedCharacters)) {
+                $password[] = $char;
+                $usedCharacters[] = $char;
+
+                $i++;
+            }
         } else if ($n == 3 && isset($_GET["symbols"]) && $_GET["symbols"]) {
-            $password[] = $simboli[rand(0, 9)];
-            $i++;
+            $char = $simboli[rand(0, count($simboli) - 1)];
+            if (!in_array($char, $usedCharacters)) {
+                $password[] = $char;
+                $usedCharacters[] = $char;
+
+                $i++;
+            }
         }
     } while ($i < $_GET["length"]);
-    echo implode($password);
+
+    return implode($password);
 };

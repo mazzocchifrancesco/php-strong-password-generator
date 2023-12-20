@@ -15,7 +15,10 @@
     $numbers = range(0, 9);
     $symbols = ["$", "%", "$", "/", "(", ")", "?", "!", "&", "^"];
 
-    generaPass($alphabet, $alphabetUpper, $numbers, $symbols);
+    $password = generaPass($alphabet, $alphabetUpper, $numbers, $symbols);
+    echo $password;
+    var_dump($password);
+
 
     ?>
 </body>
