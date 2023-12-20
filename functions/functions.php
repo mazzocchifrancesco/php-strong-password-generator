@@ -39,4 +39,4 @@ function generaPass($alfabeto, $maiuscole, $numeri, $simboli)
     } while ($i < $_GET["length"]);
 
     return implode($password);
-};
+}

@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include 'functions.php';
+    include __DIR__ . '/functions/functions.php';
     $alphabet = range('a', 'z');
     $alphabetUpper = range('A', 'Z');
     $numbers = range(0, 9);
