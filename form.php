@@ -16,7 +16,7 @@
                 <h1 class="text-center mb-5">GENERATORE PASSWORD</h1>
 
 
-                <form action="password.php" class="d-flex gap-3">
+                <form action="form.php" class="d-flex gap-3">
                     <div>
                         <div>inserisci la lunghezza della Password</div>
                         <input id="length" class="w-100" value="8" type="number" placeholder="lunghezza" name="length" min="8" max="50">
@@ -44,9 +44,30 @@
                     </div>
                     <input type="submit" class="btn btn-primary d-flex align-items-center px-4" value="INVIA">
                 </form>
+                <!-- risposta password  -->
+                <div class="text-center fs-5">
+
+                    <?php
+
+                    include __DIR__ . '/functions/functions.php';
+                    $alphabet = range('a', 'z');
+                    $alphabetUpper = range('A', 'Z');
+                    $numbers = range(0, 9);
+                    $symbols = ["$", "%", "$", "/", "(", ")", "?", "!", "&", "^"];
+
+                    if (isset($_GET["letters"]) || isset($_GET["numbers"]) || isset($_GET["symbols"])) {
+
+                        $password = generaPass($alphabet, $alphabetUpper, $numbers, $symbols);
+                        echo "password--> " . $password;
+                    }
+
+                    ?>
+                </div>
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
